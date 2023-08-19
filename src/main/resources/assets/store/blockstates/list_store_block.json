@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "store:block/store_block"
+    }
+  }
+}
