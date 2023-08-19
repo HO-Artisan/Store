@@ -1,7 +1,7 @@
 package ho.artisan.store.common.tile;
 
-import ho.artisan.store.Store;
 import ho.artisan.store.common.tile.inf.StackStoreTile;
+import ho.artisan.store.init.StoreBlockEntityTypes;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.nbt.NbtCompound;
@@ -11,7 +11,7 @@ public class StackTile extends StackStoreTile {
     public final InventoryStorage inventoryStorage = InventoryStorage.of(this, null);
 
     public StackTile(BlockPos pos, BlockState state) {
-        super(Store.STACK_STORE, pos, state);
+        super(StoreBlockEntityTypes.stackStore, pos, state);
     }
 
     @Override
