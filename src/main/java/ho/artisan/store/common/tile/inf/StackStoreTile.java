@@ -57,7 +57,7 @@ public abstract class StackStoreTile extends StoreTile implements SidedInventory
     public ItemStack removeStack(int slot, int amount) {
         ItemStack result = Inventories.splitStack(this.stack, slot, amount);
         if (!result.isEmpty()) {
-            inventoryChanged();
+            markDirty();
         }
         return result;
     }
@@ -71,7 +71,7 @@ public abstract class StackStoreTile extends StoreTile implements SidedInventory
     public void setStack(int slot, ItemStack stack) {
         ItemStack itemStack = stack.copy();
         this.stack.set(slot, itemStack);
-        inventoryChanged();
+        markDirty();
     }
 
     @Override
@@ -84,8 +84,9 @@ public abstract class StackStoreTile extends StoreTile implements SidedInventory
         this.stack.clear();
     }
 
-    public void inventoryChanged() {
-        markDirty();
+    @Override
+    public void markDirty() {
+        super.markDirty();
         if (world != null) {
             world.updateListeners(getPos(), getCachedState(), getCachedState(), (1) | (1 << 1));
         }
